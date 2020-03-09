@@ -14,7 +14,7 @@ const LaunchRequestHandler: RequestHandler = {
     return HandlerInput.requestEnvelope.request.type === "LaunchRequest";
   },
   handle(HandlerInput: HandlerInput): Response {
-    const speechText = "Welcome to the Smart Narrative Network";
+    const speechText = "Ready to buy stock";
 
     return HandlerInput.responseBuilder
       .speak(speechText)
@@ -32,8 +32,8 @@ const HelloWorldIntentHandler: RequestHandler = {
     );
   },
   handle(handlerInput: HandlerInput): Response {
-    const speechText = "Smart Narrative Network!";
-
+    const speechText = "Buying stock";
+    
     return handlerInput.responseBuilder
       .speak(speechText)
       .withSimpleCard("Hello World", speechText)
@@ -128,10 +128,9 @@ exports.handler = async (event: any, context: Context) => {
   }
 
   const fetch = await axios.get(
-    "https://k8p9i0etci.execute-api.us-east-1.amazonaws.com/prod/"
+    "https://yboz2o0dk2.execute-api.us-east-1.amazonaws.com/alexa/"
   );
-  console.log(" FETCHED DATA - " + fetch.data);
-
+  
   const response = await skill.invoke(event, context);
   console.log(`RESPONSE++++${JSON.stringify(response)}`);
 
